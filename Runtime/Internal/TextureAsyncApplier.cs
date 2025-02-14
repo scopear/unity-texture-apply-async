@@ -153,6 +153,9 @@ namespace Gilzoide.TextureApplyAsync.Internal
         private static readonly Camera.CameraCallback CachedOnPreRender = OnPreRender;
         private static void OnPreRender(Camera camera)
         {
+            if (camera != Camera.main)
+                return;
+
             int currentFrame = Time.frameCount;
             if (currentFrame != _lastProcessedFrame)
             {
